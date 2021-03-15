@@ -75,9 +75,4 @@ object BlogDataProcessor extends Logging {
   }
 
   private final def wordsInTitle(blogPost: BlogPost): Array[String] = blogPost.title.split("""\s+""")
-
-
-  private final def postLikedByAuthor(blogPost: BlogPost): Boolean = {
-    blogPost.likedBy.contains(blogPost.authorID)
-  }
 }
