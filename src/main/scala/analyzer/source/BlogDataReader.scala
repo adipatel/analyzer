@@ -1,17 +1,15 @@
 package analyzer.source
 
-import akka.NotUsed
-import akka.stream.scaladsl.Source
 import analyzer.shared.{BlogPost, Logging}
 
 object BlogDataReader extends Logging {
 
-  def source(fileName: String): Source[BlogPost, NotUsed] = Source.fromIterator(() =>  readOrders(fileName))
+  def source(fileName: String): Iterator[BlogPost] = readPosts(fileName)
 
-  private[this] def readOrders(fileName: String): Iterator[BlogPost] = {
+  private[this] def readPosts(fileName: String): Iterator[BlogPost] = {
     io.Source.fromFile(fileName, "UTF-8")
       .getLines()
-      .map{ l =>
+      .map { l =>
         val blogDataObj = ujson.read(l).obj
         val blogPostId = s"${blogDataObj.get("blog_id").get.num.toInt}_${blogDataObj.get("post_id").get.num.toInt}"
         val authorId = blogDataObj.get("author_id").get.num.toInt

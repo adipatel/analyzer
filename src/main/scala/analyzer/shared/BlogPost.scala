@@ -2,7 +2,6 @@ package analyzer.shared
 
 import analyzer.shared.BlogPost.UserID
 
-
 case class BlogPost(blogPostID: String,
                     authorID: UserID,
                     likeCount: Int,

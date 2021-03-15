@@ -4,8 +4,8 @@
 .idea/*
 target/*
 logs/*
-project/*
-*.jsonl
+project/target
+project/project
 .bsp
 
 # Log file
@@ -25,6 +25,7 @@ project/*
 *.tar.gz
 *.rar
 *.iml
+*.cache
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
